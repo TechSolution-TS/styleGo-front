@@ -7,7 +7,9 @@ import { HeaderComponent } from './header/header.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [
+    './app.component.css',
+  ]
 })
 export class AppComponent {
   title = 'stylego-front';
