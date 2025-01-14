@@ -1,0 +1,15 @@
+/* Garantir que o HTML e o BODY ocupem a altura total */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* O contêiner principal ocupará 100% da altura da viewport */
+.main-container {
+  min-height: 100vh; /* 100% da altura da tela */
+  display: flex; /* Para alinhamento */
+  flex-direction: column; /* Orientação de cima para baixo */
+  background-color: #ffffff; /* Opcional: Cor de fundo preta */
+}

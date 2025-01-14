@@ -1,0 +1,28 @@
+.text-gradient {
+    background: linear-gradient(to right, #60a5fa, #2563eb); /* Gradiente azul */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.875rem; /* Tamanho equivalente ao `text-3xl` */
+  }
+  
+  .navbar {
+    padding: 1rem 0; /* Ajusta o espaçamento vertical */
+  }
+  
+  .container {
+    max-width: 80rem; /* Limita a largura máxima */
+  }
+
+  .bg-navy {
+    background-color: #000000; /* Azul-marinho */
+  }
+  
+  .navbar-brand {
+    font-size: 1.875rem; /* Tamanho do título */
+    padding-left: 1rem;
+  }
+
+  .logo-img {
+    height: 50px; /* Altura da logo */
+    max-height: 100%; /* Garante que não ultrapasse o limite do navbar */
+  }
