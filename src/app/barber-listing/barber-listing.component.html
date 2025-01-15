@@ -1,79 +1,80 @@
 <div class="container-fluid bg-dark text-light min-vh-100">
-  <!-- Filters Toggle -->
-  <div class="mb-4">
-    <button
-      (click)="toggleFilters()"
-      class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
-    >
-      Filtros
-      <span>
+  <div class="filter-toggle mb-4">
+    <button (click)="toggleFilters()" class="btn btn-filter w-100 d-flex justify-content-between align-items-center">
+        <span class="filter-title">Filtros</span>
         <i *ngIf="showFilters" class="bi bi-chevron-up"></i>
         <i *ngIf="!showFilters" class="bi bi-chevron-down"></i>
-      </span>
     </button>
   </div>
 
-  <!-- Filters Panel -->
-  <div
-    *ngIf="showFilters"
-    class="border border-light rounded p-3 mb-4 bg-secondary"
-  >
-    <div class="row g-3">
-      <div class="col-12 col-md-4">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Buscar por nome"
-        />
+  <div *ngIf="showFilters" class="filter-panel">
+    <div class="filterinputs row g-3">
+      <div class="col-12"> <!-- Input de nome ocupa toda a largura -->
+        <input type="text" class="form-control filter-input larger-input" placeholder="Buscar por nome" [(ngModel)]="nomeFiltro">
       </div>
-      <div class="col-12 col-md-4">
-        <select class="form-select">
+      <div class="col-12 col-md-6"> <!-- Distância e Avaliação ocupam metade da largura em telas médias/grandes -->
+        <select class="form-select filter-select larger-input" [(ngModel)]="distanciaFiltro">
           <option value="">Distância</option>
           <option value="1">Até 1km</option>
           <option value="2">Até 2km</option>
           <option value="5">Até 5km</option>
         </select>
       </div>
-      <div class="col-12 col-md-4">
-        <select class="form-select">
+      <div class="col-12 col-md-6">
+        <select class="form-select filter-select larger-input" [(ngModel)]="avaliacaoFiltro">
           <option value="">Avaliação</option>
           <option value="4.5">4.5+</option>
           <option value="4.0">4.0+</option>
           <option value="3.5">3.5+</option>
         </select>
       </div>
+      <div class="col-12">
+        <button class="btn btn-primary w-100 larger-input" (click)="applyFilters()">Pesquisar</button>
+      </div>
     </div>
   </div>
 
-    <div class="carousel-container">
-        <div class="carousel" #carousel>
-            <div *ngFor="let barber of barbers" class="carousel-slide">
-                <div class="card bg-warning text-dark text-center shadow-sm border-0 h-100" style="cursor: pointer;">
-                    <div class="card-header fw-bold bg-dark text-warning">
-                      Cortes: {{ barber.cuts }}
-                    </div>
-                    <img alt="Barber Image" class="card-img-top bg-white rounded mx-auto my-3">
-                    <div class="card-body d-flex flex-column h-100 justify-content-between">
-                      <h5 class="card-title fw-bold">{{ barber.name }}</h5>
-                      <div class="d-flex justify-content-center mb-2">
-                        <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi" [class.bi-star-fill]="star <= barber.rating"
-                          [class.bi-star]="star > barber.rating"
-                          [ngClass]="star <= barber.rating ? 'text-warning' : 'text-muted'">
-                        </i>
-                      </div>
-                      <p class="card-text">Distância: {{ barber.distance }}</p>
-                    </div>
+  <div class="carousel-container">
+    <div class="carousel" #carousel>
+        <div  *ngFor="let barber of paginatedBarbers" class="carousel-slide">
+            <div class="card figurinha text-center h-100" style="cursor: pointer;">
+                <div class="card-header fw-bold text-white small-header"> <!-- Classe small-header adicionada -->
+                    Cortes: {{ barber.cuts }}
+                </div>
+                <img [src]="barber.imageUrl" alt="Barber Image" class="card-img-top rounded mx-auto my-3">
+                <div class="card-body d-flex flex-column justify-content-center"> <!-- justify-content: center -->
+                    <h3 class="card-title fw-bold large-title">{{ barber.name }}</h3>  <!-- h3 e large-title adicionados -->
+                    <div class="d-flex justify-content-center mb-2 align-items-center"> <!-- Adicione align-items-center -->
+                      <div>  <!-- Envolve as estrelas em uma div -->
+                         <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi"
+                             [class.bi-star-fill]="star <= barber.rating"
+                             [class.bi-star]="star > barber.rating"
+                             [ngClass]="star <= barber.rating ? 'text-warning' : 'text-dark'">
+                         </i>
+                       </div>
+                       <span class="rating-value ms-2">({{ barber.rating }})</span> <!-- Exibe o rating -->
+                  </div>
+                    <p class="card-text">Distância: {{ barber.distance }}</p>
                 </div>
             </div>
         </div>
-        <button (click)="prevSlide()" class="carousel-control-prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button (click)="nextSlide()" class="carousel-control-next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    </div>
+      
+    <div class="pagination">
+      <button *ngIf="currentPage > 0" (click)="goToPage(currentPage - 1)" class="btn btn-pagination">
+          Anterior
+      </button>
+
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+          <button (click)="goToPage(i)" class="btn btn-pagination" [class.active]="i === currentPage">
+              {{ i + 1 }}
+          </button>
+      </ng-container>
+
+      <button *ngIf="currentPage < totalPages - 1" (click)="goToPage(currentPage + 1)" class="btn btn-pagination">
+          Próximo
+      </button>
     </div>
   </div>
+</div>
   

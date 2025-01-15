@@ -1,73 +1,73 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importe CommonModule
-import { NgIf, NgFor, NgClass } from '@angular/common'; // Importe as diretivas
+import { Component,AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgIf, NgFor, NgClass } from '@angular/common'; 
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-barber-listing',  // Certifique-se de que este nome é 'app-barber-listing'
+  selector: 'app-barber-listing',  
   templateUrl: './barber-listing.component.html',
   styleUrls: ['./barber-listing.component.css'],
-  standalone: true,  // Adicione esta linha
-  imports: [CommonModule, NgIf, NgFor, NgClass] // Adicione as importações aqui
+  standalone: true,
+  imports: [CommonModule, NgIf, NgFor, NgClass, FormsModule] 
 })
 
 export class BarberListingComponent {
-  showFilters = false;
-
-  @ViewChild('carousel') carousel!: ElementRef;
-    currentSlide = 0;
 
   barbers = [
-    { id: 1, name: "João Silva", rating: 4.8, distance: "1.2 km", cuts: 1423 },
-    { id: 2, name: "Maria Santos", rating: 4.9, distance: "1.8 km", cuts: 1892 },
-    { id: 3, name: "Pedro Oliveira", rating: 4.7, distance: "2.3 km", cuts: 1156 },
-    { id: 4, name: "Ana Costa", rating: 4.9, distance: "2.5 km", cuts: 1345 },
-    { id: 5, name: "Carlos Souza", rating: 4.8, distance: "2.7 km", cuts: 1678 },
+    { id: 1, name: "João Silva", rating: 4.8, distance: "1.2 km", cuts: 1423, imageUrl: "https://placehold.co/600x400/png" },
+    { id: 2, name: "Maria Santos", rating: 4.9, distance: "1.8 km", cuts: 1892, imageUrl: "https://placehold.co/600x400/png" },
+    { id: 3, name: "Pedro Oliveira", rating: 4.7, distance: "2.3 km", cuts: 1156, imageUrl: "https://placehold.co/600x400/png" },
+    { id: 4, name: "Ana Costa", rating: 4.9, distance: "2.5 km", cuts: 1345, imageUrl: "https://placehold.co/600x400/png" },
+    { id: 5, name: "Carlos Souza", rating: 4.8, distance: "2.7 km", cuts: 1678, imageUrl: "https://placehold.co/600x400/png" },
+    { id: 6, name: "Pedro Oliveira", rating: 4.7, distance: "2.3 km", cuts: 1156, imageUrl: "https://via.placeholder.com/300" },
+    { id: 7, name: "aaaaaaaaaa", rating: 4.9, distance: "2.5 km", cuts: 1345, imageUrl: "https://via.placeholder.com/300" },
+    { id: 8, name: "cccccccccc", rating: 4.8, distance: "2.7 km", cuts: 1678, imageUrl: "https://via.placeholder.com/300" },
+    { id: 9, name: "ggggggggggg", rating: 4.7, distance: "2.3 km", cuts: 1156, imageUrl: "https://via.placeholder.com/300" },
+    { id: 10, name: "yyyyyyyyyya", rating: 4.9, distance: "2.5 km", cuts: 1345, imageUrl: "https://via.placeholder.com/300" },
+    { id: 11, name: "tttttttttt", rating: 4.8, distance: "2.7 km", cuts: 1678, imageUrl: "https://via.placeholder.com/300" },
+    { id: 12, name: "eeeeeeeeee", rating: 4.7, distance: "2.3 km", cuts: 1156, imageUrl: "https://via.placeholder.com/300" },
+    { id: 13, name: "wwwwwwwww", rating: 4.9, distance: "2.5 km", cuts: 1345, imageUrl: "https://via.placeholder.com/300" },
+    { id: 14, name: "6666666666", rating: 4.8, distance: "2.7 km", cuts: 1678, imageUrl: "https://via.placeholder.com/300" },
   ];
 
-  itemsPerPage = 3;
+  showFilters = false;
+  filteredBarbers = this.barbers;
+  itemsPerPage = 3; // Número de itens por página
+  currentPage = 0;
+  nomeFiltro = '';
+  distanciaFiltro = '';
+  avaliacaoFiltro = '';
+
+  totalPages: number = Math.ceil(this.barbers.length / this.itemsPerPage);
 
   toggleFilters() {
     this.showFilters = !this.showFilters;
   }
 
-  get totalPages() {
-    return Math.ceil(this.barbers.length / this.itemsPerPage);
+  applyFilters() {
+    this.filteredBarbers = this.barbers.filter(barber => {
+      const nomeMatch = !this.nomeFiltro || barber.name.toLowerCase().includes(this.nomeFiltro.toLowerCase());
+      const distanciaMatch = !this.distanciaFiltro || parseFloat(barber.distance) <= parseFloat(this.distanciaFiltro);
+      const avaliacaoMatch = !this.avaliacaoFiltro || barber.rating >= parseFloat(this.avaliacaoFiltro);
+      return nomeMatch && distanciaMatch && avaliacaoMatch;
+    });
+
+    this.currentPage = 0; // Reseta para a primeira página após filtrar
+    
+
+    // Calcula totalPages DEPOIS da filtragem:
+    this.totalPages = Math.ceil(this.filteredBarbers.length / this.itemsPerPage);
   }
 
-  ngAfterViewInit() {
-    this.initCarousel();
+  goToPage(page: number) {
+        if (page >= 0 && page < this.totalPages) {
+            this.currentPage = page;
+            console.log(this.currentPage)
+        }
   }
 
-    initCarousel() {
-        const slides = this.carousel.nativeElement.querySelectorAll('.carousel-slide');
-        if (slides.length > 0) {
-            slides[this.currentSlide].classList.add('active');
-        }
-    }
-
-    prevSlide() {
-        this.moveSlide(-1);
-    }
-
-    nextSlide() {
-        this.moveSlide(1);
-    }
-
-    moveSlide(direction: number) {
-        const slides = this.carousel.nativeElement.querySelectorAll('.carousel-slide');
-        const slideWidth = slides[0].offsetWidth;  // Largura de um slide
-        const carouselWidth = this.carousel.nativeElement.offsetWidth; // Largura visível do carrossel
-        const maxOffset = (slides.length * slideWidth) - carouselWidth;
-
-
-        this.currentSlide = (this.currentSlide + direction + slides.length) % slides.length;
-
-
-        // Ajuste para não ultrapassar os limites
-        let translateX = -this.currentSlide * slideWidth;
-        if(translateX < -maxOffset)
-            translateX = -maxOffset;
-
-        this.carousel.nativeElement.style.transform = `translateX(${translateX}px)`;
-        }
+  get paginatedBarbers() {
+    const startIndex = this.currentPage * this.itemsPerPage;
+    return this.filteredBarbers.slice(startIndex, startIndex + this.itemsPerPage);
+  }
 }

@@ -1,150 +1,236 @@
 .container-fluid {
-    background-color: #1e1e1e; /* Cor de fundo escura */
-    color: #f8f9fa; /* Cor do texto clara */
-  }
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+  height: 90vh;
+}
 
-  .container{
-    width: 10rem;
-  }
-  
-  .bg-secondary {
-    background-color: #343a40 !important; /* Cor de fundo secundária */
-  }
-  
-  .btn-outline-light {
-    color: #f8f9fa; /* Cor do texto clara para botões */
-    border-color: #f8f9fa; /* Cor da borda clara para botões */
-  }
-  
-  .btn-outline-light:hover {
-    background-color: #f8f9fa; /* Cor de fundo clara para botões ao passar o mouse */
-    color: #1e1e1e; /* Cor do texto escura para botões ao passar o mouse */
-  }
+.container {
+  width: 90%; /* Largura responsiva do container */
+  max-width: 1200px; /* Largura máxima do container */
+  margin: 0 auto; /* Centraliza o container */
+}
 
-.card {
-    background-color: #ffc107; /* Cor de fundo amarela para os cards */
-    border: none;
-  }
-  
-  .card-header {
-    background-color: #212529; /* Cor de fundo escura para o cabeçalho do card */
-    color: #ffc107; /* Cor do texto amarela para o cabeçalho do card */
-  }
-  
-  .card-img-top {
-    background-color: #ffffff; /* Cor de fundo branca para a imagem do card */
-    border-radius: 0.25rem;
-    margin: 1.5rem auto;
-    width: 100%;
-    height: 200px; /* Corrigido o tamanho da imagem */
-    object-fit: cover; /* Para garantir que a imagem cubra toda a área */
-  }
-  
-  .card-title {
-    color: #212529; /* Cor do título do card */
-  }
-  
-  .card-text {
-    color: #212529; /* Cor do texto do card */
-  }
-  
-  .bi-star-fill {
-    color: #ffc107; /* Cor amarela para estrelas preenchidas */
-  }
-  
-  .bi-star {
-    color: #adb5bd; /* Cor cinza claro para estrelas vazias */
-  }
-  
-  .pagination { /* Estilos para a paginação */    
-    justify-content: center;
-  }
+.bg-secondary {
+  background-color: #343a40 !important;
+}
 
-  .page-item.active .page-link {
-      background-color: #ffc107; /* Cor de fundo amarela para a página ativa */
-      border-color: #ffc107;  /* Cor da borda amarela para a página ativa */
-  }
-  
-  .page-link {
-      color: #f8f9fa; /* Cor do texto dos links da paginação */
-      background-color: #343a40; /* Cor de fundo dos links da paginação */
-      border: 1px solid #f8f9fa; /* Cor da borda dos links da paginação */
-  }
-  
-  .page-link:hover {
-    background-color: #f8f9fa; /* Cor de fundo ao passar o mouse */
-    color: #1e1e1e; /* Cor do texto ao passar o mouse */
-  }
-  .page-link:focus{
-    box-shadow: none;
-  }
+.btn-outline-light {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
 
-  /* ... outros estilos ... */
+.btn-outline-light:hover {
+  background-color: #f8f9fa;
+  color: #1e1e1e;
+}
 
-.carousel {
-    width: 100%;
-    overflow: hidden;
-    position: relative; /* Para posicionar os botões */
-  }
-  
-  .carousel-slide {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%; /* Largura de cada slide igual à largura do carrossel */
-  }
-  
-  
-  .carousel-control-prev,
-  .carousel-control-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10; /* Para que os botões fiquem acima dos slides */
-    width: 5%;
-    background-color: rgba(0,0,0, 0.5); /* Cor semi-transparente */
-    border: none;
-  }
-  
-  
-  .carousel-control-prev {
-    left: 0;
-  }
-  
-  .carousel-control-next {
-    right: 0;
-  }
-  
-  .card { /* Mantém os cards alinhados */
-      margin: 0 auto;
-  }
+.filter-toggle {
+  border: none; /* Remova a borda inferior */
+  padding: 5px;   /* Remova o padding */
 
+}
+
+.btn-filter { 
+  background-color: #22211e; /* Cor de fundo dourada */
+  border: 2px solid #f8f9fa; /* Borda branca */
+  color: #f8f9fa; /* Cor do texto branca */
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 10px 20px; /* Padding interno */
+  border-radius: 5px;   /* Cantos arredondados */
+  transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+}
+
+.btn-filter:hover, .btn-filter:focus {
+  background-color: #111110; /* Cor de fundo dourada escura no hover/focus */
+  color: #ffffff; /* Cor do texto escura no hover */
+  outline: none;
+  box-shadow: none;
+}
+
+.filter-title { /* Título dos filtros */
+ margin-right: auto;
+}
+
+.filter-panel { /* Estilos para o painel de filtros */
+  background-color: rgba(52, 58, 64, 0.8); /* Fundo semi-transparente */
+  border: 1px solid #c78600; /* Borda dourada */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px; /* Espaçamento inferior */
+  padding: 30px; /* Aumenta o padding interno */
+}
+
+.larger-input { /* Classe para inputs e selects maiores */
+  padding: 2px;  /* Aumenta o padding interno */
+  font-size: 1.1rem; /* Aumenta o tamanho da fonte */
+  border-radius: 8px; /* Aumenta o raio da borda */
+  min-height: 55px; /* Define altura mínima */
+
+}
+
+
+.filterinputs{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.filter-input, .filter-select { /* Estilos para inputs e selects */
+  background-color: #212529; /* Fundo escuro */
+  border: 1px solid #c78600; /* Borda dourada */
+  color: #f8f9fa; /* Cor do texto branca */
+  border-radius: 5px;
+}
+
+
+.filter-select option {
+  background-color: #343a40; /* Cor de fundo das opções */
+  color: #f8f9fa;
+
+}
+
+.figurinha { /* Estilo do card */
+  background: linear-gradient(to bottom, #ffd700, #faa100);
+  border: 5px solid #c78600;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  height: 100%;  /* Ocupa toda a altura disponível */
+}
+
+.card-header {
+  padding: 0.5rem 1rem; /* Padding reduzido e consistente */
+  font-size: 1rem; /* Tamanho da fonte menor */
+  color: #000;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.card-body {
+  padding: 20px;
+  display: flex; /* Para centralizar verticalmente */
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center;
+}
+
+.card-title {
+  color: black;
+  font-size: 2rem; /* Título maior */
+  margin-bottom: 1rem;
+}
+
+.card-text, .bi {
+  color: black;
+}
+
+.bi-star-fill {
+  color: #c78600;
+}
+
+
+/* Carrossel */
 .carousel-container {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  margin: 20px auto; /* Margem superior e inferior para espaçamento */
 }
-
 
 .carousel {
-    width: 100%;
-    overflow: hidden;
-    display: flex; /* Slides lado a lado */
-    transition: transform 0.5s ease-in-out;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  transition: transform 0.5s ease-in-out;
 }
-
-
 
 .carousel-slide {
-  flex-shrink: 0; /* Impede que os slides encolham */
-  width: 30%; /* Largura de cada slide (ajuste conforme necessário) */
-  margin-right: 20px; /* Espaçamento entre os slides */
+  flex-shrink: 0;
+  width: 20%;
+  margin-right: 20px;
+  padding: 10px;
+  height: 45vh; /* Altura responsiva */
+  min-height: 350px; /* Altura mínima */
+
 }
-  
-  
-  /* Estilos para telas menores - responsividade*/
-  @media (max-width: 768px) {
-      .carousel-slide {
-          flex-direction: column; /* Slides empilhados verticalmente */
-          align-items: center;
-      }
+
+.rating-value { /* Estilo para o valor do rating */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black; /* Cor escura para melhor contraste */
+  margin-left: 0.5rem; /* Espaçamento à esquerda das estrelas */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer; /* Adiciona cursor de ponteiro */
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+/* Paginação */
+.pagination {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-pagination {
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.btn-pagination:hover {
+  background-color: #c78600;
+}
+
+.btn-pagination.active {
+  background-color: #c78600;
+  cursor: default;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .carousel {
+      flex-direction: column; /* Slides empilhados em telas pequenas */
   }
+  .carousel-slide {
+      width: 100%; /* Slides ocupam toda a largura */
+      margin-right: 0;
+      margin-bottom: 20px; /* Espaçamento inferior entre os slides */
+  }
+
+}
