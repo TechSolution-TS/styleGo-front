@@ -1,0 +1,79 @@
+<div class="container-fluid bg-dark text-light min-vh-100">
+  <!-- Filters Toggle -->
+  <div class="mb-4">
+    <button
+      (click)="toggleFilters()"
+      class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
+    >
+      Filtros
+      <span>
+        <i *ngIf="showFilters" class="bi bi-chevron-up"></i>
+        <i *ngIf="!showFilters" class="bi bi-chevron-down"></i>
+      </span>
+    </button>
+  </div>
+
+  <!-- Filters Panel -->
+  <div
+    *ngIf="showFilters"
+    class="border border-light rounded p-3 mb-4 bg-secondary"
+  >
+    <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por nome"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <select class="form-select">
+          <option value="">Distância</option>
+          <option value="1">Até 1km</option>
+          <option value="2">Até 2km</option>
+          <option value="5">Até 5km</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-4">
+        <select class="form-select">
+          <option value="">Avaliação</option>
+          <option value="4.5">4.5+</option>
+          <option value="4.0">4.0+</option>
+          <option value="3.5">3.5+</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+    <div class="carousel-container">
+        <div class="carousel" #carousel>
+            <div *ngFor="let barber of barbers" class="carousel-slide">
+                <div class="card bg-warning text-dark text-center shadow-sm border-0 h-100" style="cursor: pointer;">
+                    <div class="card-header fw-bold bg-dark text-warning">
+                      Cortes: {{ barber.cuts }}
+                    </div>
+                    <img alt="Barber Image" class="card-img-top bg-white rounded mx-auto my-3">
+                    <div class="card-body d-flex flex-column h-100 justify-content-between">
+                      <h5 class="card-title fw-bold">{{ barber.name }}</h5>
+                      <div class="d-flex justify-content-center mb-2">
+                        <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi" [class.bi-star-fill]="star <= barber.rating"
+                          [class.bi-star]="star > barber.rating"
+                          [ngClass]="star <= barber.rating ? 'text-warning' : 'text-muted'">
+                        </i>
+                      </div>
+                      <p class="card-text">Distância: {{ barber.distance }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button (click)="prevSlide()" class="carousel-control-prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button (click)="nextSlide()" class="carousel-control-next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+  </div>
+  

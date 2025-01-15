@@ -1,0 +1,150 @@
+.container-fluid {
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    color: #f8f9fa; /* Cor do texto clara */
+  }
+
+  .container{
+    width: 10rem;
+  }
+  
+  .bg-secondary {
+    background-color: #343a40 !important; /* Cor de fundo secundária */
+  }
+  
+  .btn-outline-light {
+    color: #f8f9fa; /* Cor do texto clara para botões */
+    border-color: #f8f9fa; /* Cor da borda clara para botões */
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #f8f9fa; /* Cor de fundo clara para botões ao passar o mouse */
+    color: #1e1e1e; /* Cor do texto escura para botões ao passar o mouse */
+  }
+
+.card {
+    background-color: #ffc107; /* Cor de fundo amarela para os cards */
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #212529; /* Cor de fundo escura para o cabeçalho do card */
+    color: #ffc107; /* Cor do texto amarela para o cabeçalho do card */
+  }
+  
+  .card-img-top {
+    background-color: #ffffff; /* Cor de fundo branca para a imagem do card */
+    border-radius: 0.25rem;
+    margin: 1.5rem auto;
+    width: 100%;
+    height: 200px; /* Corrigido o tamanho da imagem */
+    object-fit: cover; /* Para garantir que a imagem cubra toda a área */
+  }
+  
+  .card-title {
+    color: #212529; /* Cor do título do card */
+  }
+  
+  .card-text {
+    color: #212529; /* Cor do texto do card */
+  }
+  
+  .bi-star-fill {
+    color: #ffc107; /* Cor amarela para estrelas preenchidas */
+  }
+  
+  .bi-star {
+    color: #adb5bd; /* Cor cinza claro para estrelas vazias */
+  }
+  
+  .pagination { /* Estilos para a paginação */    
+    justify-content: center;
+  }
+
+  .page-item.active .page-link {
+      background-color: #ffc107; /* Cor de fundo amarela para a página ativa */
+      border-color: #ffc107;  /* Cor da borda amarela para a página ativa */
+  }
+  
+  .page-link {
+      color: #f8f9fa; /* Cor do texto dos links da paginação */
+      background-color: #343a40; /* Cor de fundo dos links da paginação */
+      border: 1px solid #f8f9fa; /* Cor da borda dos links da paginação */
+  }
+  
+  .page-link:hover {
+    background-color: #f8f9fa; /* Cor de fundo ao passar o mouse */
+    color: #1e1e1e; /* Cor do texto ao passar o mouse */
+  }
+  .page-link:focus{
+    box-shadow: none;
+  }
+
+  /* ... outros estilos ... */
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative; /* Para posicionar os botões */
+  }
+  
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Largura de cada slide igual à largura do carrossel */
+  }
+  
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Para que os botões fiquem acima dos slides */
+    width: 5%;
+    background-color: rgba(0,0,0, 0.5); /* Cor semi-transparente */
+    border: none;
+  }
+  
+  
+  .carousel-control-prev {
+    left: 0;
+  }
+  
+  .carousel-control-next {
+    right: 0;
+  }
+  
+  .card { /* Mantém os cards alinhados */
+      margin: 0 auto;
+  }
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    display: flex; /* Slides lado a lado */
+    transition: transform 0.5s ease-in-out;
+}
+
+
+
+.carousel-slide {
+  flex-shrink: 0; /* Impede que os slides encolham */
+  width: 30%; /* Largura de cada slide (ajuste conforme necessário) */
+  margin-right: 20px; /* Espaçamento entre os slides */
+}
+  
+  
+  /* Estilos para telas menores - responsividade*/
+  @media (max-width: 768px) {
+      .carousel-slide {
+          flex-direction: column; /* Slides empilhados verticalmente */
+          align-items: center;
+      }
+  }
