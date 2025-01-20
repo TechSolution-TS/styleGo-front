@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeaderComponent } from './header/header.component';
 import { BarberListingComponent } from './barber-listing/barber-listing.component';
+import { BarberProfileComponent } from './pages/barber-profile/barber-profile.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
-    //modulos do projeto
     HeaderComponent,
     BarberListingComponent,
+    BarberProfileComponent,
+    AppRoutingModule,
   ],
-  bootstrap: [] // Não bootstrap o AppComponent aqui, pois é standalone
+  bootstrap: [],
+  exports: []
 })
 export class AppModule {}

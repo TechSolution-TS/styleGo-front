@@ -2,6 +2,7 @@ import { Component,AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgIf, NgFor, NgClass } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barber-listing',  
@@ -12,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class BarberListingComponent {
+
+  constructor(private router: Router) { }
 
   barbers = [
     { id: 1, name: "João Silva", rating: 4.8, distance: "1.2 km", cuts: 1423, imageUrl: "https://placehold.co/600x400/png" },
@@ -52,10 +55,8 @@ export class BarberListingComponent {
       return nomeMatch && distanciaMatch && avaliacaoMatch;
     });
 
-    this.currentPage = 0; // Reseta para a primeira página após filtrar
-    
+    this.currentPage = 0;
 
-    // Calcula totalPages DEPOIS da filtragem:
     this.totalPages = Math.ceil(this.filteredBarbers.length / this.itemsPerPage);
   }
 
@@ -69,5 +70,10 @@ export class BarberListingComponent {
   get paginatedBarbers() {
     const startIndex = this.currentPage * this.itemsPerPage;
     return this.filteredBarbers.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  goToBarberProfile(barberId: number) {
+    console.log("Navegando para o perfil do barbeiro:", barberId);
+    this.router.navigate(['/barber', barberId]);
   }
 }

@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Perfil do Barbeiro</h1>
+  
+    <div *ngIf="barber"> <!-- Mostra os dados apenas se o barbeiro for encontrado -->
+      <p><strong>ID:</strong> {{ barber.id }}</p>
+      <p><strong>Nome:</strong> {{ barber.name }}</p>
+      <p><strong>Avaliação:</strong> {{ barber.rating }}</p>
+      <p><strong>Distância:</strong> {{ barber.distance }}</p>
+      <p><strong>Cortes:</strong> {{ barber.cuts }}</p>
+    </div>
+    <div *ngIf="!barber">Carregando...</div> <!-- Mensagem enquanto carrega -->
+  </div>

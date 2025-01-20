@@ -36,8 +36,8 @@
 
   <div class="carousel-container">
     <div class="carousel" #carousel>
-        <div  *ngFor="let barber of paginatedBarbers" class="carousel-slide">
-            <div class="card figurinha text-center h-100" style="cursor: pointer;">
+        <div  *ngFor="let barber of paginatedBarbers" class="carousel-slide" (click)="goToBarberProfile(barber.id)">
+            <div class="card figurinha text-center h-100" style="cursor: pointer;" >
                 <div class="card-header fw-bold text-white small-header"> <!-- Classe small-header adicionada -->
                     Cortes: {{ barber.cuts }}
                 </div>
