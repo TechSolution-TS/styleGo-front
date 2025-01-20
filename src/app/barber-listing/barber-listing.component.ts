@@ -1,6 +1,5 @@
+import { CommonModule, NgIf, NgFor, NgClass } from '@angular/common';
 import { Component,AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgIf, NgFor, NgClass } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -74,6 +73,6 @@ export class BarberListingComponent {
 
   goToBarberProfile(barberId: number) {
     console.log("Navegando para o perfil do barbeiro:", barberId);
-    this.router.navigate(['/barber', barberId]);
+    this.router.navigate([`/barber/${barberId}`]);
   }
 }
