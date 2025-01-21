@@ -34,7 +34,7 @@ export class BarberListingComponent {
 
   showFilters = false;
   filteredBarbers = this.barbers;
-  itemsPerPage = 3; // Número de itens por página
+  itemsPerPage = 1; // Número de itens por página
   currentPage = 0;
   nomeFiltro = '';
   distanciaFiltro = '';
@@ -71,8 +71,25 @@ export class BarberListingComponent {
     return this.filteredBarbers.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
+  getPaginationRange(): number[] {
+    const visiblePages = 3; // Número máximo de páginas visíveis
+    let startPage = this.currentPage - 1;
+    let endPage = this.currentPage + 1;
+
+    if (startPage < 0) {
+      startPage = 0;
+      endPage = Math.min(visiblePages-1, this.totalPages - 1);
+    } else if (endPage >= this.totalPages) {
+      endPage = this.totalPages - 1;
+      startPage = Math.max(0, endPage - (visiblePages -1 ));
+    }
+     return Array.from({ length: Math.min(endPage - startPage +1,this.totalPages)}, (_, i) => startPage + i);
+
+  }
+
   goToBarberProfile(barberId: number) {
     console.log("Navegando para o perfil do barbeiro:", barberId);
     this.router.navigate([`/barber/${barberId}`]);
   }
+
 }

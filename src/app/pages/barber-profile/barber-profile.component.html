@@ -1,12 +1,58 @@
-<div class="container">
-    <h1>Perfil do Barbeiro</h1>
-  
-    <div *ngIf="barber"> <!-- Mostra os dados apenas se o barbeiro for encontrado -->
-      <p><strong>ID:</strong> {{ barber.id }}</p>
-      <p><strong>Nome:</strong> {{ barber.name }}</p>
-      <p><strong>Avaliação:</strong> {{ barber.rating }}</p>
-      <p><strong>Distância:</strong> {{ barber.distance }}</p>
-      <p><strong>Cortes:</strong> {{ barber.cuts }}</p>
+<div class="profile-container">
+  <div class="barber-header">
+    <div class="barber-avatar">
+        <img [src]="barber.imageUrl || 'default-image.jpg'" alt="Foto do Barbeiro"> 
     </div>
-    <div *ngIf="!barber">Carregando...</div> <!-- Mensagem enquanto carrega -->
+    <div class="barber-details">
+      <h2 class="barber-name">{{ barber.name }}</h2>
+      <div class="barber-ratings">
+        <i class="bi bi-star-fill gold"></i> {{ barber.rating }} | {{ barber.numRatings }} avaliações | {{ barber.cuts }} cortes
+      </div>
+    </div>
   </div>
+
+  <div class="section reels-section">
+    <h3 class="section-title">Reels</h3>
+    <div class="carousel-container">
+      <div class="carousel">
+        <ng-container *ngFor="let reel of barber.reels; let i = index">
+          <div class="carousel-slide" [class.active]="i === currentReelIndex">
+            <img [src]="reel.imageUrl" alt="Barber Reel" class="reel-image">
+          </div> </ng-container> </div>
+          <button class="carousel-control prev btn-pagination" (click)="prevReel()">
+            <i class="bi bi-chevron-left"></i>
+          </button> 
+          <button class="carousel-control next btn-pagination" (click)="nextReel()">
+            <i class="bi bi-chevron-right"></i>
+          </button> 
+          </div>
+      </div> 
+
+  <div class="section appointments-section"> <!-- Classe 'section' adicionada -->
+    <h3 class="section-title">Agendamentos Confirmados</h3>
+    <div class="appointment" *ngFor="let appointment of barber.confirmedAppointments">
+      <div class="appointment-details">
+          <h4>{{ appointment.clientName }}</h4>
+          <div class="appointment-info"> <!-- Nova div para agrupar informações -->
+            <p><i class="bi bi-geo-alt-fill"></i> {{ appointment.address }}</p>
+            <p><i class="bi bi-calendar3"></i> {{ appointment.date | date:'dd/MM/yyyy' }} às {{ appointment.time }}</p> </div>
+      </div>
+      <button class="btn btn-cancel" (click)="cancelAppointment(appointment.id)">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="section pending-requests-section">  <!-- Classe 'section' adicionada -->
+    <h3 class="section-title">Solicitações Pendentes</h3>
+    <div class="pending-request" *ngFor="let request of barber.pendingRequests">
+      <div class="request-details">
+          <h4>{{ request.clientName }}</h4>
+          <p><i class="bi bi-calendar3"></i> {{ request.date | date:'dd/MM/yyyy' }} às {{ request.time }}</p> </div>
+      <div class="request-actions">
+        <button class="btn btn-accept" (click)="acceptRequest(request.id)">Aceitar</button>
+        <button class="btn btn-reject" (click)="rejectRequest(request.id)">Recusar</button>
+      </div>
+    </div>
+  </div>
+</div>

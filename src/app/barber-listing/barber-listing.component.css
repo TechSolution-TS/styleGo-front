@@ -1,7 +1,8 @@
 .container-fluid {
   background-color: #1e1e1e;
   color: #f8f9fa;
-  height: 90vh;
+  min-height: 100vh; /* Garante que o conteúdo ocupe pelo menos a altura da tela */
+  padding: 1rem; /* Adiciona padding para evitar que o conteúdo encoste nas bordas */
 }
 
 .container {
@@ -25,20 +26,18 @@
 }
 
 .filter-toggle {
-  border: none; /* Remova a borda inferior */
-  padding: 5px;   /* Remova o padding */
-
+  margin-bottom: 1rem;
 }
 
 .btn-filter { 
-  background-color: #22211e; /* Cor de fundo dourada */
-  border: 2px solid #f8f9fa; /* Borda branca */
-  color: #f8f9fa; /* Cor do texto branca */
+  background-color: #22211e; 
+  border: 2px solid #f8f9fa; 
+  color: #f8f9fa;
   font-size: 1.2rem;
   font-weight: 500;
-  padding: 10px 20px; /* Padding interno */
-  border-radius: 5px;   /* Cantos arredondados */
-  transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+  padding: 0.5rem 1rem; /* Padding ajustado */
+  border-radius: 5px;   
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .btn-filter:hover, .btn-filter:focus {
@@ -48,17 +47,16 @@
   box-shadow: none;
 }
 
-.filter-title { /* Título dos filtros */
- margin-right: auto;
+.filter-title {
+  margin-right: 10px; /* Título à esquerda */
 }
 
-.filter-panel { /* Estilos para o painel de filtros */
-  background-color: rgba(52, 58, 64, 0.8); /* Fundo semi-transparente */
-  border: 1px solid #c78600; /* Borda dourada */
+.filter-panel {
+  background-color: rgba(52, 58, 64, 0.8);
+  border: 1px solid #c78600;
   border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px; /* Espaçamento inferior */
-  padding: 30px; /* Aumenta o padding interno */
+  padding: 1rem; /* Padding reduzido */
+  margin-bottom: 1rem; 
 }
 
 .larger-input { /* Classe para inputs e selects maiores */
@@ -79,11 +77,12 @@
 }
 
 
-.filter-input, .filter-select { /* Estilos para inputs e selects */
-  background-color: #212529; /* Fundo escuro */
-  border: 1px solid #c78600; /* Borda dourada */
-  color: #f8f9fa; /* Cor do texto branca */
+.filter-input, .filter-select {
+  background-color: #212529;
+  border: 1px solid #c78600;
+  color: #f8f9fa;
   border-radius: 5px;
+  margin-bottom: 1rem; /* Espaçamento entre os inputs */
 }
 
 
@@ -193,7 +192,7 @@
 
 /* Paginação */
 .pagination {
-  margin-top: 75px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,15 +221,90 @@
 
 
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .carousel {
-      flex-direction: column; /* Slides empilhados em telas pequenas */
+.barber-list {
+  display: grid; /* Usa grid para melhor controle do layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsivo */
+  gap: 1rem; 
+  max-height: 70vh; /* Limita a altura máxima */
+  overflow-y: auto;
+  justify-items: center;
+}
+
+.barber-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #ffd700, #faa100);
+  border-radius: 15px; 
+  overflow: hidden;
+  border: 2px solid #c78600;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra mais sutil */
+  cursor: pointer; /* Cursor de ponteiro */
+}
+
+.barber-image-container {
+  position: relative; 
+}
+
+.barber-image {
+  width: 100%;
+  aspect-ratio: 3/2; /* Mantém a proporção da imagem */
+  object-fit: cover;
+  border-top-left-radius: 15px;  
+  border-top-right-radius: 15px; 
+}
+
+.cuts-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Alinhado à direita */
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+  color: white;
+  padding: 0.3rem 0.6rem; /* Padding menor */
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.barber-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center;   /* Centraliza o texto */
+}
+
+
+.barber-name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #f8f9fa; /* Cor do texto branca */
+
+}
+
+.barber-rating {
+  color: gold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.barber-rating span {
+color: black;
+}
+
+.barber-distance, .barber-cuts {
+font-size: 0.9rem;
+color: #242121; /* Cor de texto mais clara para informações secundárias */
+}
+
+
+  @media (min-width: 768px) {  /* Estilos para telas maiores */
+    .barber-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-height: none; /* Remove a altura máxima em telas maiores */
   }
-  .carousel-slide {
-      width: 100%; /* Slides ocupam toda a largura */
-      margin-right: 0;
-      margin-bottom: 20px; /* Espaçamento inferior entre os slides */
+  .barber-card {
+      width: calc(33.33% - 1rem); /* Três cards por linha com espaçamento */
+      margin-bottom: 1rem; 
   }
 
 }

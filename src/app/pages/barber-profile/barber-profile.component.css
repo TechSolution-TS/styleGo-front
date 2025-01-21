@@ -1,0 +1,251 @@
+.profile-container {
+    background-color: #1e1e1e;
+    color: #f8f9fa; /* Cor do texto branca/cinza claro */
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+.barber-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.barber-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c78600; /* Borda dourada */
+}
+
+.barber-details {
+    margin-left: 1rem;
+}
+
+.barber-name {
+    color: #f8f9fa;
+    margin-bottom: 0.5rem;
+}
+
+.barber-ratings {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.barber-ratings .gold {
+    color: gold;
+}
+
+.section {
+    background-color: #212529; /* Cor de fundo das seções */
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #c78600; /* Borda dourada sutil */
+}
+
+.section-title {
+    color: #c78600; /* Cor do título dourada */
+    margin-bottom: 1rem;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden; /* Esconde os slides que não estão ativos */
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    width: 100%; /* Cada slide ocupa 100% da largura */
+    flex-shrink: 0; /* Impede que os slides encolham */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-control { /* Estilos dos botões do carrossel */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 40px; /* Largura dos botões */
+    height: 40px; /* Altura dos botões */
+    color: black; /* Cor dos ícones */
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+  
+  }
+
+    .carousel-control:hover{
+        background-color: #c78600;
+        color: black;
+    }
+
+    .prev {
+        left: 10px; /* Posição à esquerda */
+    }
+      
+    .next {
+        right: 10px; /* Posição à direita */
+    }
+
+  .reel-image {
+    width: 100%;
+    aspect-ratio: 9/16; /* Reel com proporção vertical comum (como Stories) */
+    object-fit: cover;
+  }
+  
+  .progress {
+    height: 5px;
+    background-color: #c78600; /* Dourado */
+    transition: width 10s linear; /* Animação da barra de progresso */
+    width: 100%; /* Começa com a largura total e diminui */
+  }
+  
+  .carousel-slide.active .progress {
+    width: 0%; /* Quando o slide é ativo, a largura vai para 0 */
+  }
+
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Grid responsivo para os reels */
+    gap: 1rem;
+}
+
+.reel {
+    /* ... outros estilos ... */
+}
+
+.appointment, .pending-request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente */
+    padding: 1rem 0;  /* Adiciona padding vertical */
+    border-bottom: 1px solid #343a40; /* Linha divisória */
+
+}
+
+.appointment:last-child, .pending-request:last-child{ /* Remove a borda do ultimo item */
+    border: none;
+}
+
+
+.appointment-details, .request-details {
+    flex: 1; /* Ocupa o espaço disponível */
+
+}
+
+.appointment-info p { /* Agrupa e estiliza as infos de endereço e data/hora */
+    margin-bottom: 0.2rem; /* Reduz o espaçamento entre as linhas */
+    color: #999; /* Cor cinza claro para as informações secundárias */
+}
+
+
+.request-actions {
+    display: flex;
+    gap: 1rem; /* Espaçamento entre os botões de ação */
+}
+
+/* ... outros estilos ... */
+
+.carousel-control { /* Estilos dos botões do carrossel */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 40px; /* Largura dos botões */
+    height: 40px; /* Altura dos botões */
+    background-color: transparent; /* Fundo transparente */
+    color: black; /* Cor dos ícones */
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+  }
+  
+  
+  .carousel-control:hover{
+      background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  .prev {
+    left: 10px; /* Posição à esquerda */
+  }
+  
+  .next {
+    right: 10px; /* Posição à direita */
+  }
+  
+  .btn-pagination {
+      background-color: #ffc107; /* Cor de fundo amarela */
+      color: black;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .btn-pagination:hover {
+      background-color: #c78600; /* Cor dourada no hover */
+    }
+
+.btn {
+    /* Estilos gerais para botões */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+}
+
+
+
+.btn-accept {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.btn-reject {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+}
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+   /* Ajustes para telas maiores (se necessário) */
+
+    .reels-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta o tamanho dos reels */
+    }
+
+    .appointment, .pending-request {
+
+        align-items: flex-start; /* Alinha o conteúdo ao topo */
+    }
+
+
+}

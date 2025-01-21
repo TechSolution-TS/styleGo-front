@@ -5,7 +5,7 @@ import { BarberListingComponent } from './barber-listing/barber-listing.componen
 
 export const routes: Routes = [
   { path: 'barber/:id', component: BarberProfileComponent },
-  { path: '', component: BarberListingComponent },   // Rota raiz para BarberListingComponent
-  { path: 'home', redirectTo: '', pathMatch: 'full' }, // Redireciona /home para /
-  { path: '**', redirectTo: '', pathMatch: 'full' }   // Redireciona qualquer outra rota para /
+  { path: '', component: BarberListingComponent },  
+  { path: 'home', redirectTo: '', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '', pathMatch: 'full' } 
 ];
