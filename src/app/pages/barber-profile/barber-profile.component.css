@@ -103,7 +103,7 @@
 
   .reel-image {
     width: 100%;
-    aspect-ratio: 9/16; /* Reel com proporção vertical comum (como Stories) */
+    aspect-ratio: 9/14; /* Reel com proporção vertical comum (como Stories) */
     object-fit: cover;
   }
   

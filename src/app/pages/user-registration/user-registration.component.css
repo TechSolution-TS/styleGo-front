@@ -1,0 +1,122 @@
+/* Container principal */
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1e1e1e;
+    padding: 1rem;
+  }
+  
+  /* Card de registro */
+  .registration-card {
+    background-color: #212529;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid #c78600;
+  }
+  
+  /* Título */
+  h2 {
+    color: #c78600;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  /* Avatar */
+  .avatar-upload {
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-image,
+  .default-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 2px solid #c78600;
+  }
+  
+  .default-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: #999;
+    background-color: #343a40;
+  }
+  
+  .btn-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: #f8f9fa;
+    background-color: #343a40;
+    border: 2px solid #c78600;
+  }
+  
+  /* Formulário */
+  .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .form-group label {
+    color: #f8f9fa;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+  
+  .form-group input.invalid {
+    border-color: red;
+  }
+  
+  small {
+    color: red;
+    font-size: 0.75rem;
+    display: block;
+  }
+  
+  /* Checkbox */
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .checkbox-group label {
+    color: #f8f9fa;
+    cursor: pointer;
+  }
+  
+  /* Botão de envio */
+  .btn-submit {
+    background-color: #c78600;
+    color: black;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-submit:hover {
+    background-color: #a06a00;
+  }
+  

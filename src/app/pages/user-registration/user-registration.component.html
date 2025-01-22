@@ -1,0 +1,99 @@
+<div class="registration-container">
+    <div class="registration-card">
+      <h2>Cadastro</h2>
+  
+      <!-- Upload de avatar -->
+      <div class="avatar-upload">
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="Foto do Perfil" class="profile-image" />
+        <div *ngIf="!selectedImage" class="default-avatar">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <input type="file" accept="image/*" (change)="onImageChange($event)" #fileInput hidden />
+        <button (click)="fileInput.click()" class="btn btn-upload">
+          <i class="bi bi-camera-fill"></i> Escolher Foto
+        </button>
+      </div>
+  
+      <!-- Formulário -->
+      <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <!-- Nome -->
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="formData.name"
+            required
+            placeholder="Digite seu nome completo"
+            [class.invalid]="!formData.name && registrationForm.submitted"
+          />
+          <small *ngIf="!formData.name && registrationForm.submitted">O nome é obrigatório.</small>
+        </div>
+  
+        <!-- Endereço -->
+        <div class="form-group">
+          <label for="address">Endereço</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            [(ngModel)]="formData.address"
+            required
+            placeholder="Digite seu endereço"
+            [class.invalid]="!formData.address && registrationForm.submitted"
+          />
+          <small *ngIf="!formData.address && registrationForm.submitted">O endereço é obrigatório.</small>
+        </div>
+  
+        <!-- Senha -->
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
+            placeholder="Digite sua senha"
+            minlength="6"
+            [class.invalid]="(!formData.password || formData.password.length < 6) && registrationForm.submitted"
+          />
+          <small
+            *ngIf="(!formData.password || formData.password.length < 6) && registrationForm.submitted">
+            A senha deve ter no mínimo 6 caracteres.
+          </small>
+        </div>
+  
+        <!-- Confirmar Senha -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirmar Senha</label>
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            name="confirmPassword"
+            [(ngModel)]="formData.confirmPassword"
+            required
+            placeholder="Confirme sua senha"
+            [class.invalid]="formData.password !== formData.confirmPassword && registrationForm.submitted"
+          />
+          <small
+            *ngIf="formData.password !== formData.confirmPassword && registrationForm.submitted">
+            As senhas não coincidem.
+          </small>
+        </div>
+  
+        <!-- Checkbox -->
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="isBarber" name="isBarber" [(ngModel)]="formData.isBarber" />
+          <label for="isBarber">Sou Barbeiro</label>
+        </div>
+  
+        <!-- Botão de envio -->
+        <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-submit">
+          Cadastrar
+        </button>
+      </form>
+    </div>
+  </div>
+  

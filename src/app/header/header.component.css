@@ -6,7 +6,14 @@
   }
   
   .navbar {
-    padding: 1rem 0; /* Ajusta o espaçamento vertical */
+    padding: 0.5rem 0; /* Reduz o padding vertical */
+  }
+
+  .header-content { /* Nova classe */
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre a imagem e os botões */
+    width: 100%; /* Ocupa toda a largura do container */
   }
   
   .container {
@@ -23,6 +30,74 @@
   }
 
   .logo-img {
-    height: 50px; 
+    height: 40px; 
     max-height: 100%;
   }
+
+  .navbar-actions {
+    display: flex;
+    gap: 1rem; /* Espaçamento entre os botões */
+    align-items: center; /* Centraliza verticalmente */
+    margin-left: auto; /* Alinha os botões à direita */
+}
+
+.btn { /* Estilos gerais para os botões */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500; /* Fonte um pouco mais espessa */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+
+.btn-login {
+  background-color: #ffd700; /* Fundo dourado */
+  color: black; /* Ícone em preto */
+  border: none; /* Sem borda */
+  padding: 0.5rem; /* Padding ao redor do ícone */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  border-radius: 5px; /* Cantos arredondados */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transições suaves */
+}
+
+.btn-login:hover {
+  background-color: #c78600; /* Dourado mais escuro no hover */
+  color: white; /* Ícone branco no hover */
+}
+
+
+.btn-icon {
+  background-color: transparent; /* Fundo transparente */
+  border: none;
+  color: #c78600; /* Cor dourada */
+  font-size: 1.5rem; /* Aumenta o tamanho dos ícones */
+  padding: 0.5rem; /* Adiciona um pouco de padding */
+  border-radius: 5px; /* Cantos arredondados */
+  transition: background-color 0.3s, color 0.3s; /* Transição suave */
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro transparente no hover */
+  color: #ffd700; /* Cor amarela no hover */
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: #c78600; /* Dourado */
+    border: none;
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+.btn-logout:hover {
+    color: #a06a00; /* Dourado mais escuro */
+}
+
+
+/* Media Queries (se necessário) */
+@media (max-width: 768px) {
+    .navbar-actions {
+        align-items: flex-end;    /* Alinhados à direita */
+    }
+}

@@ -1,7 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom bg-navy">
+<nav class="navbar navbar-dark bg-navy border-bottom">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="assets/StyleGo-Logo.jpg" alt="StyleGo Logo" class="logo-img" />
-        </a>
+        <div class="header-content">
+            <a class="navbar-brand" (click)="goToHome()">
+                <img src="assets/StyleGo-Logo.jpg" alt="StyleGo Logo" class="logo-img">
+            </a>
+            <div class="navbar-actions">
+                <ng-container *ngIf="isLoggedIn">
+                    <button class="btn-icon btn-logout" (click)="logout()">
+                        <i class="bi bi-box-arrow-right"></i> 
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="!isLoggedIn">
+                    <button class="btn-icon btn-login" (click)="goToLogin()">
+                        <i class="bi bi-box-arrow-in-right"></i> <!-- Ícone de entrar no sistema -->
+                    </button>
+                </ng-container>
+            </div>
+        </div>
     </div>
-  </nav>
+</nav>
