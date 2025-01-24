@@ -1,0 +1,64 @@
+.price-table-container {
+    background-color: #212529; /* Cinza escuro */
+    color: #f8f9fa; /* Branco/cinza claro */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #c78600;
+    margin: 1rem auto; /* Centraliza na página */
+    max-width: 600px; /* Largura máxima */
+}
+
+h2 {
+    color: #c78600; /* Dourado */
+    margin-bottom: 1rem;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente */
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #343a40;
+    gap: 1rem;
+}
+
+.service-item:last-child { /* Remove a borda do último item */
+    border-bottom: none;
+}
+
+.service-name {
+    font-weight: bold;
+    margin-bottom: 0.2rem; /* Espaço entre nome e duração */
+}
+
+
+
+.service-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
+
+.service-duration {
+    font-size: 0.8rem;
+    color: #999; 
+}
+
+.service-price {
+    font-weight: bold;
+}
+
+
+.price-note {
+    font-size: 0.8rem;
+    color: #999; /* Cinza claro */
+}
+
+/* Responsividade (opcional) */
+@media (max-width: 576px) {
+    .price-table th, .price-table td {
+        display: block; /* Empilha as células em telas pequenas */
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -11,5 +11,5 @@ body {
   min-height: 100vh; /* 100% da altura da tela */
   display: flex; /* Para alinhamento */
   flex-direction: column; /* Orientação de cima para baixo */
-  background-color: #ffffff; /* Opcional: Cor de fundo preta */
+  background-color: #1e1e1e; /* Opcional: Cor de fundo preta */
 }

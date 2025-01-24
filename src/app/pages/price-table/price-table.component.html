@@ -1,1 +1,12 @@
-<p>price-table works!</p>
+<div class="price-table-container">
+    <h2>Tabela de Serviços</h2>
+
+    <div *ngFor="let service of services" class="service-item">
+        <div>
+            <div class="service-name">{{ service.name }}</div>
+            <div class="service-duration">{{ service.duration }}</div> </div>
+        <div class="service-price">R$ {{ service.price }}</div>
+    </div>
+
+    <p class="price-note">Os preços podem variar de acordo com o comprimento e a complexidade do cabelo.</p>
+</div>

@@ -47,7 +47,7 @@ export class BarberListingComponent {
   }
 
   goToPriceTable() {
-    this.router.navigate(['/tabela-precos']);
+    this.router.navigate(['/prices']);
   }
 
   applyFilters() {
