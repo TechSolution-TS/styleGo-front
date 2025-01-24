@@ -27,28 +27,41 @@ h2 {
     font-size: 1.5rem;
 }
 
+.form-container { /* Nova div para conter o formulário */
+    width: 90%; /* Largura responsiva */
+    max-width: 400px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
 /* Grupos de formulário */
 .form-group {
     margin-bottom: 1rem;
-    text-align: left;
 }
 
 .form-group label {
+    display: block; /* Rótulos em linha separada */
+    margin-bottom: 0.5rem;
     color: #f8f9fa;
-    font-size: 0.9rem;
-    font-weight: bold;
+    text-align: left;
+}
+
+.form-group input.invalid {
+    border-color: #dc3545; /* Borda vermelha para erro */
+}
+
+.form-group small {
+    color: #dc3545; /* Cor vermelha para mensagem de erro */
+    font-size: 0.8rem;
+    display: block; /* Mensagem de erro em linha separada */
+    margin-top: 0.3rem;
 }
 
 .form-group input {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid #ced4da;
     border-radius: 5px;
-    background-color: #343a40;
-    color: #f8f9fa;
-    outline: none;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+    box-sizing: border-box; /* Inclui padding e border na largura total */
 }
 
 .form-group input:focus {
@@ -59,45 +72,37 @@ h2 {
     border-color: red;
 }
 
-small {
-    color: red;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    display: block;
-}
-
-/* Botão de envio */
 .btn-submit {
-    background-color: #c78600;
+    display: block; /* Ocupa toda a largura */
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ffc107; /* Dourado */
     color: black;
-    padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
-    margin-top: 1rem;
+    margin-top: 1rem; /* Adicionei margem superior */
 }
 
 .btn-submit:hover {
-    background-color: #a06a00;
+    background-color: #a06a00; /* Dourado mais escuro */
 }
 
-/* Link de registro */
+.btn-submit:disabled { /* Desabilita o botão visualmente */
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .registration-link {
+    text-align: center;
     margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #c78600;
 }
 
 .registration-link a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #ffd700;
-}
-
-.registration-link a:hover {
-    text-decoration: underline;
+    color: #c78600; /* Dourado */
+    cursor: pointer;
 }
 
 /* Responsividade */

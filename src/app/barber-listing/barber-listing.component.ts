@@ -46,6 +46,10 @@ export class BarberListingComponent {
     this.showFilters = !this.showFilters;
   }
 
+  goToPriceTable() {
+    this.router.navigate(['/tabela-precos']);
+  }
+
   applyFilters() {
     this.filteredBarbers = this.barbers.filter(barber => {
       const nomeMatch = !this.nomeFiltro || barber.name.toLowerCase().includes(this.nomeFiltro.toLowerCase());

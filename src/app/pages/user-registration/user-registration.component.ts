@@ -16,10 +16,11 @@ export class UserRegistrationComponent {
   showConfirmPassword = false;
   formData = {
     name: '',
+    email:'',
     address: '',
     password: '',
     confirmPassword: '',
-    isBarber: false
+    userType: null
   };
 
 
@@ -43,8 +44,12 @@ export class UserRegistrationComponent {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 
-  onSubmit() {
+  onSubmit() {    
+    if (!this.formData.userType) {
+      alert("Selecione o tipo de usuário: Cliente ou Prestador de Serviço.");
+      return;
+    }
+
     console.log(this.formData);
-    // Lógica para enviar os dados do formulário para o backend
   }
 }

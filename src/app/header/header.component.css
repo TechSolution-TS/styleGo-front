@@ -15,10 +15,6 @@
     justify-content: space-between; /* Distribui o espaço entre a imagem e os botões */
     width: 100%; /* Ocupa toda a largura do container */
   }
-  
-  .container {
-    max-width: 80rem; /* Limita a largura máxima */
-  }
 
   .bg-navy {
     background-color: #000000; /* Azul-marinho */

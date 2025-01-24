@@ -1,66 +1,108 @@
 <div class="container-fluid bg-dark text-light min-vh-100">
-  <div class="filter-toggle mb-4">
-    <button (click)="toggleFilters()" class="btn btn-filter w-100 d-flex justify-content-between align-items-center">
-        <span class="filter-title">Filtros</span>
-        <i *ngIf="showFilters" class="bi bi-chevron-up"></i>
-        <i *ngIf="!showFilters" class="bi bi-chevron-down"></i>
+  <div class="filter-toggle mb-4 d-flex justify-content-between">
+    <!-- Adicionei d-flex e justify-content-between -->
+    <button (click)="toggleFilters()" class="btn btn-filter">
+      <!-- Removi w-100 -->
+      <span class="filter-title">Filtros</span>
+      <i *ngIf="showFilters" class="bi bi-chevron-up"></i>
+      <i *ngIf="!showFilters" class="bi bi-chevron-down"></i>
+    </button>
+
+    <button (click)="goToPriceTable()" class="btn btn-filter">
+      Preços
     </button>
   </div>
 
   <div *ngIf="showFilters" class="filter-panel">
-      <input type="text" class="form-control filter-input mb-3" placeholder="Buscar por nome" [(ngModel)]="nomeFiltro">
+    <input
+      type="text"
+      class="form-control filter-input mb-3"
+      placeholder="Buscar por nome"
+      [(ngModel)]="nomeFiltro"
+    />
 
-      <select class="form-select filter-select mb-3" [(ngModel)]="distanciaFiltro">
-          <option value="">Distância</option>
-          <option value="1">Até 1km</option>
-          <option value="2">Até 2km</option>
-          <option value="5">Até 5km</option>
-      </select>
+    <select
+      class="form-select filter-select mb-3"
+      [(ngModel)]="distanciaFiltro"
+    >
+      <option value="">Distância</option>
+      <option value="1">Até 1km</option>
+      <option value="2">Até 2km</option>
+      <option value="5">Até 5km</option>
+    </select>
 
-      <select class="form-select filter-select mb-3" [(ngModel)]="avaliacaoFiltro">
-          <option value="">Avaliação</option>
-          <option value="4.5">4.5+</option>
-          <option value="4.0">4.0+</option>
-          <option value="3.5">3.5+</option>
-      </select>
+    <select
+      class="form-select filter-select mb-3"
+      [(ngModel)]="avaliacaoFiltro"
+    >
+      <option value="">Avaliação</option>
+      <option value="4.5">4.5+</option>
+      <option value="4.0">4.0+</option>
+      <option value="3.5">3.5+</option>
+    </select>
 
-      <button class="btn btn-primary w-100" (click)="applyFilters()">Pesquisar</button>
+    <button class="btn btn-primary w-100" (click)="applyFilters()">
+      Pesquisar
+    </button>
   </div>
 
   <div class="barber-list">
     <ng-container *ngFor="let barber of paginatedBarbers">
-        <div class="barber-card" (click)="goToBarberProfile(barber.id)">
-            <div class="barber-image-container">
-                <img [src]="barber.imageUrl" alt="Barber Image" class="barber-image">
-                <div class="cuts-badge">{{ barber.cuts + " Cortes" }}</div> </div>
-            <div class="barber-info">
-                <h3 class="barber-name">{{ barber.name }}</h3>
-                <div class="barber-rating">
-                      <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi"
-                          [class.bi-star-fill]="star <= barber.rating"
-                          [class.bi-star]="star > barber.rating"
-                          [ngClass]="star <= barber.rating ? 'text-warning' : 'text-dark'">
-                      </i> <span>({{ barber.rating }})</span>
-                  </div>
-                  <p class="barber-distance">Distância: {{ barber.distance }}</p>
-                </div>
-              </div>
+      <div class="barber-card" (click)="goToBarberProfile(barber.id)">
+        <div class="barber-image-container">
+          <img
+            [src]="barber.imageUrl"
+            alt="Barber Image"
+            class="barber-image"
+          />
+          <div class="cuts-badge">{{ barber.cuts + " Cortes" }}</div>
+        </div>
+        <div class="barber-info">
+          <h3 class="barber-name">{{ barber.name }}</h3>
+          <div class="barber-rating">
+            <i
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              class="bi"
+              [class.bi-star-fill]="star <= barber.rating"
+              [class.bi-star]="star > barber.rating"
+              [ngClass]="star <= barber.rating ? 'text-warning' : 'text-dark'"
+            >
+            </i>
+            <span>({{ barber.rating }})</span>
+          </div>
+          <p class="barber-distance">Distância: {{ barber.distance }}</p>
+        </div>
+      </div>
     </ng-container>
   </div>
 
   <div class="pagination">
-    <button *ngIf="currentPage > 0" (click)="goToPage(currentPage - 1)" class="btn btn-pagination">
-        <i class="bi bi-chevron-left"></i> <!-- Seta para a esquerda -->
+    <button
+      *ngIf="currentPage > 0"
+      (click)="goToPage(currentPage - 1)"
+      class="btn btn-pagination"
+    >
+      <i class="bi bi-chevron-left"></i>
+      <!-- Seta para a esquerda -->
     </button>
 
     <ng-container *ngFor="let page of getPaginationRange(); let i = index">
-        <button (click)="goToPage(page)" class="btn btn-pagination" [class.active]="page === currentPage">
-            {{ page + 1 }}
-        </button>
+      <button
+        (click)="goToPage(page)"
+        class="btn btn-pagination"
+        [class.active]="page === currentPage"
+      >
+        {{ page + 1 }}
+      </button>
     </ng-container>
 
-    <button *ngIf="currentPage < totalPages - 1" (click)="goToPage(currentPage + 1)" class="btn btn-pagination">
-        <i class="bi bi-chevron-right"></i> <!-- Seta para a direita -->
+    <button
+      *ngIf="currentPage < totalPages - 1"
+      (click)="goToPage(currentPage + 1)"
+      class="btn btn-pagination"
+    >
+      <i class="bi bi-chevron-right"></i>
+      <!-- Seta para a direita -->
     </button>
-</div>
+  </div>
 </div>

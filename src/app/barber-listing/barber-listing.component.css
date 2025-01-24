@@ -27,24 +27,30 @@
 
 .filter-toggle {
   margin-bottom: 1rem;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btn-filter { 
-  background-color: #22211e; 
-  border: 2px solid #f8f9fa; 
-  color: #f8f9fa;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem; /* Padding ajustado */
-  border-radius: 5px;   
-  transition: background-color 0.3s, color 0.3s; 
+.btn-filter {
+    background-color: #22211e; /* Cor de fundo dourada */
+    border: 2px solid #f8f9fa; /* Borda branca */
+    color: #f8f9fa; /* Cor do texto branca */
+    font-size: 1rem; /* Tamanho da fonte menor */
+    font-weight: 500;
+    padding: 0.5rem 1rem; /* Padding interno */
+    border-radius: 5px;   /* Cantos arredondados */
+    transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
 
-.btn-filter:hover, .btn-filter:focus {
-  background-color: #111110; /* Cor de fundo dourada escura no hover/focus */
-  color: #ffffff; /* Cor do texto escura no hover */
-  outline: none;
-  box-shadow: none;
+.btn-filter:hover,
+.btn-filter:focus {
+    background-color: #111110; /* Cor de fundo dourada escura no hover/focus */
+    color: #ffffff; /* Cor do texto escura no hover */
+    outline: none;
+    box-shadow: none;
 }
 
 .filter-title {

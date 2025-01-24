@@ -30,6 +30,13 @@
           />
           <small *ngIf="!formData.name && registrationForm.submitted">O nome é obrigatório.</small>
         </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" [(ngModel)]="formData.email" 
+          required placeholder="Digite seu email" mask="A*@A*.A*">
+          <small *ngIf="!formData.email && registrationForm.submitted">Email é obrigatório.</small>
+        </div>
   
         <!-- Endereço -->
         <div class="form-group">
@@ -84,10 +91,16 @@
         </div>
   
         <!-- Checkbox -->
-        <div class="form-group checkbox-group">
-          <input type="checkbox" id="isBarber" name="isBarber" [(ngModel)]="formData.isBarber" />
-          <label for="isBarber">Sou Barbeiro</label>
-        </div>
+        <div class="radio-group">
+          <div>
+              <input type="radio" id="isClient" name="userType" value="client" [(ngModel)]="formData.userType">
+              <label for="isClient">Sou Cliente</label>
+          </div>
+          <div>
+              <input type="radio" id="isBarber" name="userType" value="barber" [(ngModel)]="formData.userType">
+              <label for="isBarber">Sou Prestador de Serviço</label>
+          </div>
+      </div>
   
         <!-- Botão de envio -->
         <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-submit">

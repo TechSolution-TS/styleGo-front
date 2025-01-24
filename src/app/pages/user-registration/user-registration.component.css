@@ -12,7 +12,7 @@
   .registration-card {
     background-color: #212529;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 500px;
@@ -64,12 +64,13 @@
   
   /* Formulário */
   .form-group {
-    margin-bottom: 1rem;
     text-align: left;
+    margin-bottom: 0.5rem;
   }
   
   .form-group label {
     color: #f8f9fa;
+    text-align: left;
   }
   
   .form-group input {
@@ -77,8 +78,7 @@
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #343a40;
-    color: #f8f9fa;
+    color: #000000;
   }
   
   .form-group input.invalid {
@@ -91,18 +91,26 @@
     display: block;
   }
   
-  /* Checkbox */
-  .checkbox-group {
+  .radio-group {  /* Estilos para o grupo de radio buttons */
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    gap: 1rem; /* Espaçamento entre os radio buttons */
+    align-items: center; /* Alinha verticalmente */
     margin-bottom: 1.5rem;
-  }
-  
-  .checkbox-group label {
-    color: #f8f9fa;
+    justify-content: center;
+}
+
+.radio-group label {
+    color: #f8f9fa; /* Cor do texto branca/cinza claro */
     cursor: pointer;
-  }
+    user-select: none; /* Evita seleção de texto no label */
+
+}
+
+.radio-group input[type="radio"] { /* Estilos para os radio buttons */
+    accent-color: #c78600; /* Cor dourada para o círculo */
+    cursor: pointer; /* Cursor de ponteiro */
+
+}
   
   /* Botão de envio */
   .btn-submit {
