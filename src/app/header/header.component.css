@@ -32,7 +32,7 @@
 
   .navbar-actions {
     display: flex;
-    gap: 1rem; /* Espaçamento entre os botões */
+    gap: 0.5rem; /* Espaçamento entre os botões */
     align-items: center; /* Centraliza verticalmente */
     margin-left: auto; /* Alinha os botões à direita */
 }
@@ -45,6 +45,24 @@
     font-weight: 500; /* Fonte um pouco mais espessa */
     transition: background-color 0.3s; /* Transição suave */
 }
+
+.btn-user { /* Estilos para o botão de perfil do usuário */
+  background-color: transparent;
+  border: none;
+  color: #c78600; /* Dourado */
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.btn-user:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro transparente no hover */
+  color: #ffd700; /* Cor amarela no hover */
+}
+
+
 
 
 .btn-login {
@@ -93,7 +111,5 @@
 
 /* Media Queries (se necessário) */
 @media (max-width: 768px) {
-    .navbar-actions {
-        align-items: flex-end;    /* Alinhados à direita */
-    }
+    
 }

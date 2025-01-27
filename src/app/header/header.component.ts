@@ -24,6 +24,10 @@ export class HeaderComponent {
     this.router.navigate([`/login`]);
   }
 
+  goToUserProfile() {
+    this.router.navigate(['/user-profile/1']); // Rota para o perfil do usuário
+  }
+
   goToHome(){
     this.router.navigate([`/home`]);
   }

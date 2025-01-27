@@ -1,0 +1,160 @@
+.profile-container {
+    background-color: #1e1e1e;
+    color: #f8f9fa;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #343a40;
+    padding-bottom: 1rem;
+}
+
+.user-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c78600;
+}
+
+.user-details {
+    margin-left: 1rem;
+}
+
+.user-name {
+    color: #f8f9fa;
+    margin-bottom: 0.5rem;
+}
+
+.user-ratings {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.user-ratings .gold {
+    color: gold;
+}
+
+.section {
+    background-color: #212529;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #c78600;
+}
+
+.section-title {
+    color: #c78600;
+    margin-bottom: 1rem;
+}
+
+.appointment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #343a40;
+}
+
+.appointment:last-child {
+    border-bottom: none;
+}
+
+.appointment-details {
+    flex: 1;
+}
+
+.appointment-info p {
+    margin-bottom: 0.2rem;
+    color: #999;
+}
+
+
+/* Barbeiros Favoritos */
+.barber-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsivo */
+    gap: 1rem;
+}
+
+.barber-card {
+    background-color: #343a40;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #c78600;
+
+}
+
+.barber-image {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+}
+
+.barber-info {
+    padding: 1rem;
+    text-align: center;
+    color: #f8f9fa;
+
+}
+
+.barber-name {
+    margin-bottom: 0.5rem;
+}
+
+.barber-rating {
+    color: gold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.barber-rating span {
+    color: #f8f9fa;
+}
+
+.barber-item { /* Estilo para cada item da lista de barbeiros */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #343a40; /* Linha divisória sutil */
+}
+
+
+.barber-details {
+    flex: 1; /* Ocupa o espaço disponível */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.btn-remove-favorite, .btn-add-favorite {
+  background-color: transparent; /* Fundo transparente */
+  border: none;
+  color: #c78600; /* Cor dourada */
+  font-size: 1rem; /* Tamanho do ícone */
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  display: flex; /* Para alinhar o ícone com o texto */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-remove-favorite:hover, .btn-add-favorite:hover {
+  background-color: rgba(199, 134, 0, 0.3); /* Fundo dourado transparente */
+  color: #f8f9fa; /* Cor branca */
+
+}
+.recent-barbers-section{
+    margin-top: 1.2rem;
+}
+
+.barber-distance {
+    font-size: 0.9rem;
+    color: #999;
+}

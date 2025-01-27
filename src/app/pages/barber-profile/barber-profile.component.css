@@ -130,6 +130,7 @@
 
 .appointment, .pending-request {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center; /* Centraliza verticalmente */
     padding: 1rem 0;  /* Adiciona padding vertical */
