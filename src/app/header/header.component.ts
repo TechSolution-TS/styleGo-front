@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf, NgFor, NgClass } from '@angular/common';
+import { StorageService } from './../services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,15 @@ import { CommonModule, NgIf, NgFor, NgClass } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  isLoggedIn = true; // Defina como true se o usuário estiver logado
+  isLoggedIn = true;
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private storageService: StorageService) { }
 
   logout() {
-    // Implemente a lógica de logout aqui
     console.log("Usuário deslogado");
-    this.isLoggedIn = false; // Atualiza o estado de login
+    this.isLoggedIn = false; 
+    this.storageService.logout();
   }
 
   goToLogin(){
@@ -25,11 +27,19 @@ export class HeaderComponent {
   }
 
   goToUserProfile() {
-    this.router.navigate(['/user-profile/1']); // Rota para o perfil do usuário
+    const userUuid = this.storageService.getUserUuid();
+  
+    if (userUuid) {
+      this.router.navigate(['/user-profile', userUuid]);
+    } else {
+      console.warn('Nenhum UUID encontrado. Redirecionando para login.');
+      this.router.navigate(['/login']);
+    }
   }
+  
 
   goToHome(){
-    this.router.navigate([`/home`]);
+    this.router.navigate([`/barber-listing`]);
   }
 
 }

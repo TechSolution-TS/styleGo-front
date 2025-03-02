@@ -1,4 +1,4 @@
-<div class="profile-container">
+<div class="profile-container" *ngIf="user">
     <div class="user-header">
         <div class="user-avatar">
             <img [src]="user.imageUrl || 'default-image.jpg'" alt="Foto do Usuário">
@@ -11,38 +11,34 @@
         </div>
     </div>
 
+    <!-- Seção de Últimos Serviços Contratados -->
     <div class="section recent-appointment-section">
-        <h3 class="section-title"> Últimos Cortes</h3>
+        <h3 class="section-title">Últimos Serviços Contratados</h3>
         <div class="barber-list">
-            <ng-container *ngIf="user.recentAppointment.length > 0; else noRecent">
-                <div *ngFor="let barber of user.recentAppointment" class="barber-item">
+            <ng-container *ngIf="user.recentAppointment && user.recentAppointment.length > 0; else noRecent">
+                <div *ngFor="let service of user.recentAppointment" class="barber-item">
                     <div class="barber-details">
-                        <h4 class="barber-name">{{ barber.name }}</h4>
+                        <h4 class="barber-name">{{ service.name }}</h4>
                         <div class="barber-rating">
-                            <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi"
-                                [class.bi-star-fill]="star <= barber.rating"
-                                [class.bi-star]="star > barber.rating"
-                                [ngClass]="star <= barber.rating ? 'text-warning' : 'text-dark'">
-                            </i>
-                            <span>({{ barber.rating }})</span>
-                            <p> {{ barber.date | date:'dd/MM/yyyy' }} às {{ barber.time }}</p>
+                            <span class="service-rating">Avaliação: {{ service.rating }}</span>
+                            <p>Data: {{ service.date | date:'dd/MM/yyyy' }} às {{ service.time }}</p>
+                            <p>Total: R$ {{ service.totalPrice }}</p>
+                            <p>Status: <strong>{{ service.status }}</strong></p>
                         </div>
                     </div>
-                    <button class="btn btn-add-favorite" (click)="addFavorite(barber.id)">
-                        <i class="bi bi-plus-lg"></i> Favoritar
-                    </button>
                 </div>
             </ng-container>
             <ng-template #noRecent>
-                <p>Você ainda não tem cortes recentes.</p>
-              </ng-template>
+                <p>Você ainda não contratou nenhum serviço.</p>
+            </ng-template>
         </div>
     </div>
 
+    <!-- Seção de Barbeiros Favoritos -->
     <div class="section favorite-barbers-section">
         <h3 class="section-title">Barbeiros Favoritos</h3>
         <div class="barber-list">
-            <ng-container *ngIf="user.favoriteBarbers.length > 0; else noFavorites">
+            <ng-container *ngIf="user.favoriteBarbers && user.favoriteBarbers.length > 0; else noFavorites">
                 <div *ngFor="let barber of user.favoriteBarbers" class="barber-item">
                     <div class="barber-details">
                         <h4 class="barber-name">{{ barber.name }}</h4>
@@ -55,16 +51,13 @@
                             <span>({{ barber.rating }})</span>
                         </div>
                     </div>
-                    <button class="btn btn-remove-favorite" (click)="removeFavorite(barber.id)">
-                        <i class="bi bi-x-lg"></i> Remover
-                    </button>
                 </div>
             </ng-container>
-    
             <ng-template #noFavorites>
-              <p>Você ainda não tem barbeiros favoritos.</p>
+                <p>Você ainda não tem barbeiros favoritos.</p>
             </ng-template>
-    
         </div>
     </div>
 </div>
+
+<p *ngIf="isLoading">Carregando perfil...</p>
