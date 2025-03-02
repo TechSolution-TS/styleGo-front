@@ -55,7 +55,7 @@
             alt="Barber Image"
             class="barber-image"
           />
-          <div class="cuts-badge">{{ barber.cuts + " Cortes" }}</div>
+          <div class="cuts-badge">{{ barber.numberCuts + " Cortes" }}</div>
         </div>
         <div class="barber-info">
           <h3 class="barber-name">{{ barber.name }}</h3>
@@ -63,12 +63,12 @@
             <i
               *ngFor="let star of [1, 2, 3, 4, 5]"
               class="bi"
-              [class.bi-star-fill]="star <= barber.rating"
-              [class.bi-star]="star > barber.rating"
-              [ngClass]="star <= barber.rating ? 'text-warning' : 'text-dark'"
+              [class.bi-star-fill]="star <= barber.assessment"
+              [class.bi-star]="star > barber.assessment"
+              [ngClass]="star <= barber.assessment ? 'text-warning' : 'text-dark'"
             >
             </i>
-            <span>({{ barber.rating }})</span>
+            <span>({{ barber.assessment }})</span>
           </div>
           <p class="barber-distance">Distância: {{ barber.distance }}</p>
         </div>
