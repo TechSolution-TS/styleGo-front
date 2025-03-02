@@ -1,42 +1,43 @@
 <div class="login-container">
-    <div class="login-card">
-      <h2>Entrar</h2>
-      <div class="form-container">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              formControlName="email"
-              placeholder="Digite seu email"
-              [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-            />
-            <small *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-              Insira um email válido.
-            </small>
-          </div>
-    
-          <div class="form-group">
-            <label for="password">Senha</label>
-            <input
-              [type]="showPassword ? 'text' : 'password'"
-              id="password"
-              formControlName="password"
-              placeholder="Digite sua senha"
-              [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-            />
-            <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-              A senha deve ter no mínimo 6 caracteres.
-            </small>
-          </div>
-    
-          <button type="submit" class="btn btn-submit" [disabled]="loginForm.invalid">Entrar</button>
-        </form>
-      </div>  
-      <p class="registration-link">
-        Ainda não sou cadastrado? <a (click)="goToRegister()">Registre-se</a>
-      </p>
-    </div>
-  </div>
+  <div class="login-card">
+    <h2>Entrar</h2>
+    <div class="form-container">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Digite seu email"
+            [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          />
+          <small *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            Insira um email válido.
+          </small>
+        </div>
   
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="Digite sua senha"
+            [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          />
+          <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            A senha deve ter no mínimo 6 caracteres.
+          </small>
+        </div>
+
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  
+        <button type="submit" class="btn btn-submit" [disabled]="loginForm.invalid">Entrar</button>
+      </form>
+    </div>  
+    <p class="registration-link">
+      Ainda não sou cadastrado? <a (click)="goToRegister()">Registre-se</a>
+    </p>
+  </div>
+</div>
